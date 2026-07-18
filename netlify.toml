@@ -11,9 +11,6 @@
 
 [build.environment]
   PYTHON_VERSION = "3.11"
-  # 让 pip 装到 Netlify 函数能找到的路径
-  PIP_TARGET = "$HOME/.local/lib/python3.11/site-packages"
-  PYTHONPATH = "$HOME/.local/lib/python3.11/site-packages"
 
 # 路由:把所有 /api/* 重写到对应的 netlify functions
 [[redirects]]
