@@ -36,3 +36,6 @@ logs/
 # Local test artifacts
 scripts/__pycache__/
 *.local
+
+# Local Netlify folder
+.netlify
