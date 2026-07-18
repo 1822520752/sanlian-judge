@@ -1,11 +1,11 @@
 """
-赛博判官 UI 视觉验证 - Playwright 截图
+sanlian-judge UI 视觉验证 - Playwright 截图
 """
 from playwright.sync_api import sync_playwright
 import time
 import os
 
-OUT_DIR = r"e:\开发项目文件夹\AI创造公开赛 - 副本\赛博判官\ui_screenshots"
+OUT_DIR = r"e:\开发项目文件夹\AI创造公开赛 - 副本\sanlian-judge\ui_screenshots"
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # 模拟数据(用于报告页)

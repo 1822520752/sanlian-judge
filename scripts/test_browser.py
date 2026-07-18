@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 # 截图保存目录
-SHOT_DIR = Path(r"e:\开发项目文件夹\AI创造公开赛 - 副本\赛博判官\test_screenshots")
+SHOT_DIR = Path(r"e:\开发项目文件夹\AI创造公开赛 - 副本\sanlian-judge\test_screenshots")
 SHOT_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -43,7 +43,7 @@ def main():
         try:
             page.goto("http://localhost:5000", wait_until="networkidle", timeout=30000)
             title = page.title()
-            if "赛博判官" in title:
+            if "sanlian-judge" in title:
                 log("✓ PASS", f"首页标题: {title}")
             else:
                 log("✗ FAIL", f"首页标题异常: {title}")

@@ -1,6 +1,6 @@
 /* =====================================================
  * cache.js — UID 缓存
- *  - 键名: cyber-judge:cache:{uid}
+ *  - 键名: sanlian-judge:cache:{uid}
  *  - TTL:   24 小时
  *  - LRU:   最多 10 个 UID，超出按时间淘汰最旧
  *  - 全局命名空间 window.CyberJudgeCache
@@ -9,7 +9,7 @@
 (function (global) {
   'use strict';
 
-  var NS = 'cyber-judge';
+  var NS = 'sanlian-judge';
   var KEY_PREFIX = NS + ':cache:';
   var INDEX_KEY = NS + ':cache-index';
   var TTL_MS = 24 * 60 * 60 * 1000; // 24 小时
@@ -62,7 +62,7 @@
     var half = Math.floor(arr.length / 2);
     var removed = arr.slice(0, half);
     arr = arr.slice(half);
-    // 防御 item.uid undefined(lsRemove 会拼成 'cyber-judge:cache:undefined',无害但脏)
+    // 防御 item.uid undefined(lsRemove 会拼成 'sanlian-judge:cache:undefined',无害但脏)
     removed.forEach(function (item) {
       if (item && item.uid) lsRemove(KEY_PREFIX + item.uid);
     });

@@ -174,7 +174,7 @@ sep("[5] 首页与静态资源")
 # 5.1 首页
 try:
     r = requests.get(f"{BASE}/", timeout=10)
-    if r.status_code == 200 and "赛博判官" in r.text:
+    if r.status_code == 200 and "sanlian-judge" in r.text:
         log(PASS, "首页加载正常")
         if "?ts=" in r.text:
             log(PASS, "cache buster (ts=) 已注入")

@@ -289,8 +289,9 @@ def _safe_sync(coro_factory: Any) -> Any:
             loop.run_until_complete(loop.shutdown_asyncgens())
         except Exception:
             pass
+        # 不设 asyncio.set_event_loop(None)，避免线程池复用线程时后续
+        # asyncio 操作因无 event loop 而失败
         loop.close()
-        asyncio.set_event_loop(None)
 
 
 def get_profile(uid: str) -> Dict[str, Any]:

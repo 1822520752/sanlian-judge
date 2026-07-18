@@ -1,5 +1,5 @@
 """
-scripts/dev_server.py - 赛博判官本地一体化开发服务器
+scripts/dev_server.py - sanlian-judge 本地一体化开发服务器
 
 提供:
   - 静态文件服务 (index.html, static/*)
@@ -281,7 +281,7 @@ def api_avatar():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "5000"))
     print("=" * 60)
-    print("赛博判官本地服务器")
+    print("sanlian-judge 本地服务器")
     print("=" * 60)
     print(f"  浏览器访问:http://localhost:{port}")
     print(f"  静态目录  :{os.path.join(ROOT, 'static')}")

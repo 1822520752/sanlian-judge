@@ -1,5 +1,5 @@
 """
-端到端验证脚本: 验证赛博判官 MVP 的所有关键路径
+端到端验证脚本: 验证 sanlian-judge MVP 的所有关键路径
 
 运行: python scripts/verify_mvp.py
 """
@@ -259,7 +259,7 @@ def verify_profile_input_validation() -> bool:
 
 def main() -> int:
     print("=" * 60)
-    print("赛博判官 MVP 端到端验证")
+    print("sanlian-judge MVP 端到端验证")
     print("=" * 60)
 
     results = []

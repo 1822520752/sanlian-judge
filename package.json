@@ -1,5 +1,5 @@
 {
-  "name": "cyber-judge",
+  "name": "sanlian-judge",
   "version": "1.0.0",
   "description": "B站用户赛博人格分析系统 - 输入UID,AI生成半认真半整活的人格报告",
   "private": true,

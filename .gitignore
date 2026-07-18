@@ -39,3 +39,4 @@ scripts/__pycache__/
 
 # Local Netlify folder
 .netlify
+netlify/build-functions

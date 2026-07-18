@@ -36,7 +36,7 @@ DEFAULT_DATA_FILE = os.path.join(
     "data",
     "rank.json",
 )
-KV_KEY = "cyber-judge:rank:list"
+KV_KEY = "sanlian-judge:rank:list"
 
 # 全局锁:序列化 write_rank,防止并发读-改-写丢数据(dev_server 单进程足够)
 _rank_write_lock = threading.Lock()
