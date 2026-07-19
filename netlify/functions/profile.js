@@ -1,6 +1,9 @@
 // netlify/functions/profile.js
 // GET /api/profile?uid={uid}
 
+const PROXY = "https://api.allorigins.win/raw?url=";
+const BILI_BASE = "https://api.bilibili.com/";
+
 exports.handler = async (event) => {
   try {
     const q = event.queryStringParameters || {};
@@ -10,16 +13,12 @@ exports.handler = async (event) => {
       return json(200, { code: -1, data: null, error: "UID 只能输入数字" });
     }
 
-    const headers = {
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-      Referer: "https://www.bilibili.com/",
-    };
-
+    const ua = "Mozilla/5.0";
     const [info, relation, stat, videosRaw] = await Promise.all([
-      fetchJson(`https://api.bilibili.com/x/space/acc/info?mid=${uid}`, headers),
-      fetchJson(`https://api.bilibili.com/x/relation?mid=${uid}`, headers),
-      fetchJson(`https://api.bilibili.com/x/space/stat?mid=${uid}`, headers),
-      fetchJson(`https://api.bilibili.com/x/space/arc/search?mid=${uid}&ps=10&pn=1`, headers),
+      fetchJson(PROXY + encodeURIComponent(BILI_BASE + "x/space/acc/info?mid=" + uid), ua),
+      fetchJson(PROXY + encodeURIComponent(BILI_BASE + "x/relation?mid=" + uid), ua),
+      fetchJson(PROXY + encodeURIComponent(BILI_BASE + "x/space/stat?mid=" + uid), ua),
+      fetchJson(PROXY + encodeURIComponent(BILI_BASE + "x/space/arc/search?mid=" + uid + "&ps=10&pn=1"), ua),
     ]);
 
     if (!info || info.code !== 0) {
@@ -57,9 +56,9 @@ exports.handler = async (event) => {
   }
 };
 
-async function fetchJson(url, headers = {}) {
+async function fetchJson(url, ua) {
   try {
-    const res = await fetch(url, { headers, signal: AbortSignal.timeout(10000) });
+    const res = await fetch(url, { headers: { "User-Agent": ua }, signal: AbortSignal.timeout(12000) });
     if (!res.ok) return null;
     return await res.json();
   } catch (e) { return null; }
