@@ -60,8 +60,8 @@ const MD5 = (() => {
   }
   function md5blk(s) { const arr = new Array(16); for (let i = 0; i < 16; i++) arr[i] = s.charCodeAt(i * 2) + (s.charCodeAt(i * 2 + 1) << 16); return arr; }
   function add32(a, b) { return (a + b) & 0xFFFFFFFF; }
-  function hex(x) { let s = ''; for (let i = 0; i < 4; i++) s += hex[(x >> (i * 8 + 4)) & 0x0F] + hex[(x >> (i * 8)) & 0x0F]; return s; }
-  return function md5(s) { const state = md51(s); return hex(state[0]) + hex(state[1]) + hex(state[2]) + hex(state[3]); };
+  function hexStr(x) { let s = ''; for (let i = 0; i < 4; i++) s += hex[(x >> (i * 8 + 4)) & 0x0F] + hex[(x >> (i * 8)) & 0x0F]; return s; }
+  return function md5(s) { const state = md51(s); return hexStr(state[0]) + hexStr(state[1]) + hexStr(state[2]) + hexStr(state[3]); };
 })();
 
 const MIXIN_KEY_ENC_TABLE = [
