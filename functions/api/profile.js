@@ -128,7 +128,8 @@ async function fetchWithProxy(url) {
         signal: AbortSignal.timeout(10000),
       });
       if (resp.ok) return resp;
-    } catch (_) {
+      console.warn('proxy failed:', proxy || 'direct', 'status:', resp.status);
+    } catch (_) { console.warn('proxy error:', proxy || 'direct', _.message); }
       // 继续尝试下一个代理
     }
   }
@@ -196,6 +197,7 @@ export async function onRequest(context) {
       }, error: null,
     });
   } catch (e) {
-    return json({ code: -1, data: null, error: 'B站数据获取失败' });
+    console.error('profile error:', e.message || e);
+    return json({ code: -1, data: null, error: 'B站数据获取失败: ' + (e.message || '') });
   }
 }
